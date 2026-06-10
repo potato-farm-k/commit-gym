@@ -1,73 +1,62 @@
 # commit-gym
 
-commit-gym은 Git/GitHub를 처음 배우는 사람이 기본 명령어를 반복해서 연습할 수 있는 Python CLI 프로그램입니다.
+**Git/GitHub 반복 훈련장**
 
-실제 Git 명령어를 실행하지 않고, 사용자가 입력한 문자열이 정답과 일치하는지만 확인합니다. 그래서 Git 저장소가 아니어도 안전하게 연습할 수 있습니다.
+commit-gym은 Git/GitHub를 처음 배우는 사람이 브라우저에서 전체 작업 흐름을 반복 연습하는 정적 웹앱입니다. 실제 명령어는 실행하지 않으므로 실수해도 안전합니다.
 
-## 실행 방법
+## 학습 목표
 
-터미널에서 `commit-gym` 폴더로 이동한 뒤 실행합니다.
+- `pwd`, `cd`, `mkdir` 등 프로젝트 시작 전 필요한 CLI 기본 익히기
+- `git init`부터 첫 commit까지의 흐름 이해하기
+- local repository와 GitHub remote repository 연결하기
+- `status → diff → add → commit → push` 기본 루틴 반복하기
+- `clone`, `pull`, remote와 `.git` 폴더의 역할 이해하기
+- 초보자가 자주 만나는 오류를 읽고 해결 방향 찾기
 
-```bash
-cd commit-gym
-python main.py
-```
+## 주요 기능
 
-환경에 따라 `python3` 명령어를 사용해야 할 수도 있습니다.
+- 8개의 실제 상황 기반 명령어 입력 훈련
+- 공백과 대소문자를 너그럽게 처리하는 정답 확인
+- 폴더명, commit 메시지, repository URL을 자유롭게 입력하는 형식 검증
+- 여러 줄을 한 번에 설명하는 명령어 매뉴얼
+- Git/GitHub 핵심 개념 및 자주 만나는 오류 카드
+- 정답 설명이 포함된 5문제 미니 퀴즈
+- 브라우저 `localStorage`를 이용한 훈련 진행률 저장
 
-```bash
-python3 main.py
-```
-
-## 메뉴
+## 파일 구조
 
 ```text
-1. Practice basic Git routine
-2. Show Git command manual
-3. Take a simple quiz
-0. Exit
+commit-gym/
+├── index.html   # 화면 구조
+├── style.css    # 반응형 UI 스타일
+├── app.js       # 명령어, 시나리오, 퀴즈 데이터와 동작
+└── README.md    # 프로젝트 안내
 ```
 
-프로그램 진행 중 어느 입력 화면에서든 `q`를 입력하면 바로 종료할 수 있습니다. 터미널 단축키 `Ctrl+C`로도 종료할 수 있습니다.
+## 로컬에서 실행하기
 
-## 연습할 수 있는 Git 기본 루틴
+별도 설치나 빌드 과정이 없습니다. `index.html`을 직접 열거나 간단한 정적 서버를 실행하세요.
 
-commit-gym의 첫 버전에서는 아래 5개 명령어를 집중적으로 연습합니다.
+```bash
+python3 -m http.server 8000
+```
 
-1. `git status`
-2. `git diff`
-3. `git add .`
-4. `git commit -m "message"`
-5. `git push`
+브라우저에서 `http://localhost:8000`으로 접속합니다.
 
-루틴 4의 commit message는 매번 달라질 수 있으므로, 연습할 때는 짧은 메시지 예시를 랜덤으로 보여 줍니다. 사용자가 입력한 message 문구가 예시와 똑같은지는 검사하지 않고, `git commit -m "..."` 형식인지 확인합니다.
+## GitHub Pages 배포 방법
 
-## 기능
+1. 이 폴더를 GitHub repository에 push합니다.
+2. GitHub repository의 **Settings → Pages**로 이동합니다.
+3. **Build and deployment**에서 **Deploy from a branch**를 선택합니다.
+4. `main` branch와 `/ (root)` 폴더를 선택하고 저장합니다.
+5. 잠시 뒤 표시되는 공개 주소로 접속합니다.
 
-### 1. Practice basic Git routine
+## 초보자용 사용 방법
 
-기본 Git 루틴을 순서대로 입력해 보는 연습입니다.
+1. 첫 화면의 **오늘의 훈련 메뉴**에서 연습할 상황을 고릅니다.
+2. **지금 할 일**을 읽고 터미널 입력창에 명령어를 직접 입력합니다.
+3. 막히면 **힌트 보기**를 누르고, 완료 후 **다시 연습**으로 반복합니다.
+4. 기억나지 않는 명령어는 **명령어 매뉴얼**에 한 줄 또는 여러 줄로 입력합니다.
+5. 개념 노트와 오류 카드를 읽고 마지막에 미니 퀴즈로 확인합니다.
 
-정답을 입력하면 `정답입니다`와 짧은 설명을 보여 줍니다. 그리고 현재까지 입력한 루틴을 누적해서 보여 줍니다. 틀리면 `틀렸습니다`, 올바른 명령어, 짧은 설명을 보여 줍니다.
-
-### 2. Show Git command manual
-
-5개 기본 명령어에 대해 다음 내용을 보여 줍니다.
-
-- 명령어
-- 언제 사용하는지
-- 간단한 설명
-
-### 3. Take a simple quiz
-
-Git 기본 명령어에 대한 5문제 객관식 퀴즈를 풉니다.
-
-각 문제마다 정답 여부를 알려 주고, 마지막에 점수를 보여 줍니다.
-
-## 향후 추가하면 좋을 기능
-
-- 난이도별 연습 모드
-- 더 많은 Git 명령어 추가
-- 자주 틀린 문제 다시 풀기
-- GitHub Pull Request 흐름 연습
-- 실제 예시 상황을 보고 알맞은 명령어 고르기
+> commit-gym은 학습용 시뮬레이션입니다. 입력한 Git/CLI 명령어를 실제 컴퓨터에서 실행하지 않습니다.
