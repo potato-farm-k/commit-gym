@@ -255,7 +255,6 @@ code {
   border-radius: 99px;
   background: var(--green-bright);
   content: "";
-  transform: rotate(-1deg);
 }
 
 .hero-description {
