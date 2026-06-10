@@ -241,16 +241,7 @@ code {
 }
 
 .hero h1 em {
-  padding: 0 0.08em;
-  border-radius: 0.08em;
   color: var(--green);
-  background: linear-gradient(
-    to top,
-    rgba(45, 211, 141, 0.2) 0 42%,
-    transparent 42% 100%
-  );
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
   font-style: normal;
 }
 
