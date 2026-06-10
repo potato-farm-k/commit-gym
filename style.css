@@ -241,20 +241,17 @@ code {
 }
 
 .hero h1 em {
-  position: relative;
+  padding: 0 0.08em;
+  border-radius: 0.08em;
   color: var(--green);
+  background: linear-gradient(
+    to top,
+    rgba(45, 211, 141, 0.2) 0 42%,
+    transparent 42% 100%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
   font-style: normal;
-}
-
-.hero h1 em::after {
-  position: absolute;
-  right: 0;
-  bottom: -5px;
-  left: 0;
-  height: 4px;
-  border-radius: 99px;
-  background: var(--green-bright);
-  content: "";
 }
 
 .hero-description {
